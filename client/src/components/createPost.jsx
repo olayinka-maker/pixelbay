@@ -3,7 +3,7 @@ import React from "react";
 const CreatePost = () => {
   return (
     <div>
-      <p>Collections</p>
+      <p>CreateUsers</p>
     </div>
   );
 };
