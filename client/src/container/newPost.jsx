@@ -25,7 +25,7 @@ const NewPost = () => {
             </NavLink>
           ))}
       </div>
-      <div className=" w-full flex flex-col items-start justify-start h-auto py-4">
+      <div className=" w-full px-6 flex flex-col items-start justify-start h-auto">
         <Routes>
           <Route path="/my-media" element={<Mymedia />} />
           <Route path="/collections" element={<Collections />} />
