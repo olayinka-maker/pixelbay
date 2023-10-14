@@ -1,35 +1,41 @@
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-// import "swiper/css/bundle";
-
+import "swiper/css/bundle";
 import "../assets/css/swiperStyles.css";
-import { categoryList } from "../utils/supports";
+import { categoriesList } from "../utils/supports";
+import { useState } from "react";
 
 const CreatePost = () => {
+  const [category, setCategory] = useState("");
+
   return (
-    <div className="w-full flex items-center justify-center ">
+    <div className="w-full  flex items-center flex-col justify-center">
       {/* input field */}
       <input
-        className="border border-gray-300 w-full py-2 rounded-md text-primary outline-none"
-        placeholder="    Your post title here"
+        className=" w-full px-4 py-3 rounded-md border border-gray-200 shadow-inner text-lg text-primary font-semibold"
+        placeholder="Your post title here"
       />
-      {/*  categoty list section*/}
-      <div>
+      {/* category list section */}
+      <div className="w-full max-w-screen-lg">
         <Swiper
           grabCursor={true}
-          spaceBetween={10}
+          spaceBetween={30}
           centeredSlides={false}
           className="mySwiper"
-          slidesPerView={5}
+          slidesPerView={10}
         >
-          {categoryList &&
-            categoryList.map((catData) => (
-              <SwiperSlide key={catData.id}>
-                <div>
-                  {/* Use console.log outside of JSX */}
-                  {console.log(catData.name)}
-                  <p>{catData.name}</p>
+          {categoriesList &&
+            categoriesList.map((value) => (
+              <SwiperSlide key={value.id} className="py-4">
+                <div
+                  className={`px-2 py-1 flex items-center justify-center rounded-md border border-gray-200 hover:shadow-md shadow-inner ${
+                    category === value.name && "bg-gray-200"
+                  }`}
+                  onClick={() => setCategory(value.name)}
+                >
+                  <p className="text-base text-primary cursor-pointer">
+                    {value.name}
+                  </p>
                 </div>
               </SwiperSlide>
             ))}
